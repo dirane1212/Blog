@@ -10,6 +10,7 @@ $routes = [
     'politics'          => __DIR__ . '/templates/politics.php',
     'economics-finance' => __DIR__ . '/templates/economics_finance.php',
     'social-affairs'    => __DIR__ . '/templates/social_affairs.php',
+    'db-status'         => __DIR__ . '/templates/db_status.php',   // <-- add this
 ];
 
 if (isset($routes[$uri])) {
