@@ -11,21 +11,14 @@ function render_layout(string $title, string $content): void {
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="min-h-screen bg-gray-50 text-gray-900">
-    <nav class="p-4 border-b bg-white">
-        <div class="max-w-4xl mx-auto flex items-center justify-between">
-            <a href="/" class="font-bold">My Blog</a>
-            <div class="space-x-4 text-sm">
-                <a href="/" class="text-gray-600 hover:underline">Home</a>
-                <a href="/health" class="text-gray-600 hover:underline">Health</a>
-            </div>
-        </div>
-    </nav>
+<!--    Include the Nav and Header in the layout which in turn is included in each page-->
+    <?php include __DIR__ . '/partials/nav.php'; ?>
+
     <main class="max-w-4xl mx-auto p-6">
         <?= $content ?>
     </main>
-    <footer class="text-center text-sm text-gray-500 py-6 border-t mt-12">
-        © <?= date('Y') ?> My Blog
-    </footer>
+<!--Include the Footer in the layout which in turn is included in each page-->
+<?php include __DIR__ . '/partials/footer.php'; ?>
     </body>
     </html>
     <?php

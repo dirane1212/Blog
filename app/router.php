@@ -7,6 +7,9 @@ $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 $routes = [
     ''        => __DIR__ . '/templates/home.php',
     'health'  => __DIR__ . '/templates/health.php',
+    'politics'          => __DIR__ . '/templates/politics.php',
+    'economics-finance' => __DIR__ . '/templates/economics_finance.php',
+    'social-affairs'    => __DIR__ . '/templates/social_affairs.php',
 ];
 
 if (isset($routes[$uri])) {
@@ -14,5 +17,4 @@ if (isset($routes[$uri])) {
     exit;
 }
 
-http_response_code(404);
-echo "Page not found";
+require __DIR__ . '/templates/_404.php';
