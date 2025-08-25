@@ -18,11 +18,24 @@ $routes = [
     'account'           => __DIR__ . '/templates/account.php',
     'logout'            => __DIR__ . '/templates/auth_logout.php',
 
+    // Admin panel
+    'admin/post/new'   => __DIR__ . '/templates/admin_post_new.php',
+
 ];
 
+
+// 1) Try static routes first
 if (isset($routes[$uri])) {
     require $routes[$uri];
     exit;
 }
 
+// 2) Dynamic route: /post/{slug}
+if (preg_match('~^post/([a-z0-9_-]+)$~', $uri, $m)) {
+    $_GET['slug'] = $m[1];
+    require __DIR__ . '/templates/post_view.php';
+    exit;
+}
+
+// 3) Nothing matched → 404
 require __DIR__ . '/templates/_404.php';

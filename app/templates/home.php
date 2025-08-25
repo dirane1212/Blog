@@ -1,16 +1,20 @@
 <?php
+require_once __DIR__ . '/../posts.php';
+$posts = list_published_posts();
+
 ob_start();
 ?>
-    <h1 class="text-3xl font-bold mb-4">Welcome to My Blog</h1>
-    <p class="text-gray-700">This is the home page served through our router and layout system.</p>
-
-    <p class="mt-6 text-sm text-gray-500">
-        Environment: <span class="font-mono"><?= e(APP_ENV) ?></span> ·
-        Base URL: <a href="<?= e(APP_URL) ?>" class="underline"><?= e(APP_URL) ?></a>
-    </p>
-
-
+    <h1 class="text-3xl font-bold mb-4">Latest Posts</h1>
+    <ul class="space-y-4">
+        <?php foreach ($posts as $p): ?>
+            <li>
+                <a href="/post/<?= e($p['slug']) ?>" class="text-xl font-semibold text-indigo-700 hover:underline">
+                    <?= e($p['title']) ?>
+                </a>
+                <p class="text-sm text-gray-600"><?= e($p['excerpt']) ?></p>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 <?php
 $content = ob_get_clean();
 render_layout_page("Home", $content);
-
