@@ -11,6 +11,13 @@ $routes = [
     'economics-finance' => __DIR__ . '/templates/economics_finance.php',
     'social-affairs'    => __DIR__ . '/templates/social_affairs.php',
     'db-status'         => __DIR__ . '/templates/db_status.php',   // <-- add this
+
+    // Auth
+    'register'          => __DIR__ . '/templates/auth_register.php',
+    'login'             => __DIR__ . '/templates/auth_login.php',
+    'account'           => __DIR__ . '/templates/account.php',
+    'logout'            => __DIR__ . '/templates/auth_logout.php',
+
 ];
 
 if (isset($routes[$uri])) {
